@@ -90,11 +90,11 @@ void setup()
  */
 void loop()
 {
-  // chkWlanConnet();  //网络状态检测
-  // chkSerialMsg();   //串口消息检测
-  // chkTcpMsg();      // tcp消息检测
-  // SelectLedColor(); //状态指示灯
-  // runMQTT();        // mqtt跑
+  chkWlanConnet();  //网络状态检测
+  chkSerialMsg();   //串口消息检测
+  chkTcpMsg();      // tcp消息检测
+  SelectLedColor(); //状态指示灯
+  runMQTT();        // mqtt跑
 }
 
 void SelectLedColor()
