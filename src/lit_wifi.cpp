@@ -21,6 +21,7 @@
 #define MAX_SRV_CLIENTS 3 //最大连接数量
 WiFiClient serverClients[MAX_SRV_CLIENTS];
 WiFiServer server(8080); //声明服务器对象
+
 /****************************************************************
  * 此区域内函数对程序启动和更改wifi信息后对WiFi重新初始化
  * ****************************************************************/
@@ -41,14 +42,12 @@ bool initWIFI(bool firstRun)
 
     String apName = ("LIGHT+ " + getWifiLocal_ssid());
     String apPass = getWifiLocal_pass();
-
-    WiFi.mode(WIFI_AP_STA); // AP_STA模式
-    WiFi.setSleep(false);   //关闭STA模式下wifi休眠，提高响应速度
-
     IPAddress softLocal(192, 168, 128, 1);
     IPAddress softGateway(192, 168, 128, 1);
     IPAddress softSubnet(255, 255, 255, 0);
-    WiFi.softAPConfig(softLocal, softGateway, softSubnet);
+    WiFi.mode(WIFI_AP_STA);                                // AP_STA模式
+    WiFi.setSleep(false);                                  //关闭STA模式下wifi休眠，提高响应速度
+    WiFi.softAPConfig(softLocal, softGateway, softSubnet); //配置访问点
     WiFi.softAP(apName, apPass);
     server.begin();
     server.setNoDelay(true);
@@ -77,7 +76,8 @@ bool initWIFILink()
     String wifi_pass = getWifi_pass(); //调用eeprom中函数，获取wifi password
     if (wifiConnectCheck())
     {
-        WiFi.disconnect();
+        WiFi.disconnect(); //断开连接
+        delay(1000);
     }
 
 #ifdef DEBUG
@@ -90,7 +90,7 @@ bool initWIFILink()
     Serial.println("==Link wifi==");
 #endif
 
-    if (!(wifi_ssid == "")) //存在要连接wifi
+    if (wifi_ssid != "") //存在要连接wifi
     {
         WiFi.hostname("LIGHT_" + getWifiLocal_ssid()); //更改主机名称
         WiFi.begin(wifi_ssid, wifi_pass);              //连接wifi
@@ -107,7 +107,7 @@ bool initWIFILink()
  */
 bool wifiConnectCheck()
 {
-    if (WiFi.status() != WL_CONNECTED)
+    if (WiFi.status() != WL_CONNECTED) //连接中
     {
         Serial.print(".");
         return false;

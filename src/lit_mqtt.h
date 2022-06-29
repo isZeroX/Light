@@ -13,9 +13,9 @@
 #define LIT_MQTT_H
 
 void initMQTT(bool firstRun); //初始化mqtt
-void runMQTT();               //运行
 bool mqttConnectCheck();      // mqtt连接检测
 void sendData(String msg);    //发送至mqtt
 void disMqtt();               //断开mqtt
+void runMQTT();               //运行
 
 #endif // !LIT_MQTT_H

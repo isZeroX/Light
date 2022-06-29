@@ -105,51 +105,35 @@ void SelectLedColor()
     tcpLinkFlag = false;
     return; //闪烁
   }
-
-  if (defWifiLink && !wifiLinkFlag && ledDelLinkWifi) // wifi连接等待
+  else if (ledDelLinkWifi)
   {
-    setLedColor(COLOR_BLOCK);
-    return; //闪烁
-  }
-
-  if (!tcpLinkFlag && !wifiLinkFlag) // wifi未连接，mqtt一定未连接
-  {
-    setLedColor(COLOR_RED);
-  }
-  else if (tcpLinkFlag) // tcp连接时
-  {
-    if (mqttLinkFlag)
+    if (defWifiLink && !wifiLinkFlag) // 等待wifi连接
     {
-      setLedColor(COLOR_YELLOW);
+      setLedColor(COLOR_BLOCK);
+      return; //闪烁
     }
-    else if (wifiLinkFlag)
+    switch ((wifiLinkFlag << 2) + (mqttLinkFlag << 1) + tcpLinkFlag)
     {
-      setLedColor(COLOR_OCEAN_RED);
-    }
-    else
-    {
+    case 0: //都没连接
+      setLedColor(COLOR_RED);
+      break;
+    case 1: //只有tcp连接
       setLedColor(COLOR_CYAN_BLUE);
-    }
-  }
-  else if (!tcpLinkFlag) // tcp未连接时
-  {
-    if (mqttLinkFlag)
-    {
-      setLedColor(COLOR_BLUE);
-    }
-    else if (wifiLinkFlag)
-    {
+      break;
+    case 4: //只有wifi连接
       setLedColor(COLOR_GREEN);
+      break;
+    case 5: // wifi和tcp连接
+      setLedColor(COLOR_OCEAN_RED);
+      break;
+    case 6: // wifi和tcp连接
+      setLedColor(COLOR_BLUE);
+      break;
+    case 7:
+      setLedColor(COLOR_YELLOW);
+      break;
     }
   }
-  else
-  {
-    setLedColor(COLOR_RED);
-  }
-
-
-
-  
 }
 
 /**

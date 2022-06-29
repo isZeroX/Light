@@ -1,7 +1,10 @@
 /**
  * @file lit_led.cpp
  * @author isZerox@outlook.com
- * @brief 灯光驱动-用于对led
+ * @brief 
+ * 灯光驱动-用于对led灯光修改 和状态指示灯修改
+ * rgb绿色和ws2812硬件引脚重复了，下个版本修复
+ * 
  * @version 0.1
  * @date 2022-06-13
  *

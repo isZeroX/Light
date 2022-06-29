@@ -2,6 +2,7 @@
  * @file lit_mqtt.cpp
  * @author isZeroX@outlook.com
  * @brief
+ *
  * @version 0.1
  * @date 2022-06-14
  *
@@ -16,17 +17,14 @@
 #include <lit_msgcheck.h>
 
 #define DEBUG
-// #define DEBUG_INIT
+#define SUB_NUM 3 //订阅主题上限
 
 WiFiClient espClient;
 PubSubClient client(espClient);
-
 String mqttHost = "";      // host
 String mqttId = "";        //设备id
 String mqttPubClient = ""; //发布主题,初始化函数中初始化
 bool mqttInitFlag = false; // mqtt初始化完成标志
-
-#define SUB_NUM 3 //订阅主题上限
 
 /**
  * @brief 统一发送 串口-mqtt
@@ -66,15 +64,6 @@ void mqttCallback(char *topic, byte *payload, unsigned int length)
  */
 void initMQTT(bool wifiLink)
 {
-#ifdef DEBUG_INIT
-    setServerIp(192, 168, 1, 104);
-    setServerIp(192, 168, 10, 101);
-    setSeerverPort(1883);
-    subClear();
-    setPubClient("esp0001");
-    setSubClient("phone0001", 1);
-#endif // DEBUG_INIT
-
     mqttHost = getServerIp();
     mqttId = ("LIGHT+ " + getWifiLocal_ssid());
     mqttPubClient = getPubClient();
@@ -94,18 +83,17 @@ void initMQTT(bool wifiLink)
     //没有发布，没有订阅，没有连接wifi均返回
     if (mqttPubClient == "" || !getSubNum() || !wifiLink)
     {
+
+#ifdef DEBUG
+
         if (mqttPubClient == "")
-        {
             Serial.println("mqtt not pub .");
-        }
         if (!getSubNum())
-        {
             Serial.println("mqtt not sub .");
-        }
         if (!wifiLink)
-        {
             Serial.println("mqtt not link .");
-        }
+
+#endif // DEBUG
 
         mqttInitFlag = false;
         return;
