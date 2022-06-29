@@ -3,22 +3,26 @@
  * @author isXeroX@outlook.com
  * @brief
  * 硬件: esp8266(乐鑫esp12F)
- * 环境: Arduino x platformio
+ * 框架 Arduino
+ * 环境: vs code x platformio
  * Light+为灯光控制程序，主要对ws2812灯光点阵进行控制，并能够通过手机app和pc端程序进行控制，调节灯光颜色等参数进行补光和照明功能。
  * 主要功能：
  *  灯光颜色调整
  *  灯光亮度调整
  *  灯光点阵模式
  *  灯光群控
- *  服务器连接 和 近距离连接模式 自动切换
- * bug
+ *  服务器连接 和 TCP连接模式 自动切换
+ *
+ * bug:
  * connect会在断联后tcpLinkFlag无法重新变
+ *
  * @version 0.1
  * @date 2022-06-13
  *
  * @copyright Copyright (c) 2022
  *
  */
+
 #include <Arduino.h>      //Arduino库
 #include <Ticker.h>       // Ticker库
 #include <lit_eeprom.h>   //eeprom
@@ -26,11 +30,6 @@
 #include <lit_led.h>      //led
 #include <lit_mqtt.h>     //mqtt
 #include <lit_msgcheck.h> //msgcheck
-
-// setWifi_Data("CMCC-2424", "prcy6us9"); //小屋wifi
-// setWifi_Data("TP-LINK_626E", "qwaszx4507"); //宿舍wifi
-
-// bug
 
 #define Key D8
 bool keyFlag = false;
@@ -44,44 +43,43 @@ void SelectLedColor(); //指示灯选择
 
 #define TimerHz 1            //定时器频率 1000hz 1ms/1
 #define SYS_CHECK_TIMER 1000 //系统网络状态检测周期
-#define SYS_LED_TIMER 100    //系统网络状态检测周期
+#define SYS_LED_TIMER 100    //等待网络连接检测周期
 Ticker ticker;               //定时器
-int sysCheckTimer = 0;       // 状态检测间隔 0-65535
-int sysLedTimer = 0;         // 状态le检测间隔 0-65535
+int sysCheckTimer = 0;       // led等待初始闪烁间隔 0-65535
+int sysLedTimer = 0;         // led网络连接闪烁间隔 0-65535
+bool ledDelSelWifi = false;  // led指示灯状态指示-闪烁标志
+bool ledDelLinkWifi = false; // led等待wifi连接 -闪烁标志
 bool firstFlag = false;      // 设备首次运行标志
 bool defWifiLink = false;    //用以确认是否存在wifi默认连接信息
-bool ledDelSelWifi = false;  // led指示灯检测
-bool ledDelLinkWifi = false; // led等待wifi连接
 bool wifiCheckFlag = false;  // wifi-检测标志
 bool mqttCheckFlag = false;  // mqtt-检测标志
 bool wifiLinkFlag = false;   // wifi-连接标志
 bool mqttLinkFlag = false;   // mqtt-连接标志
-bool tcpLinkFlag = false;    // tcp-连接标志
+bool tcpLinkFlag = false;    // tcp -连接标志
 
 /**
- * @brief 此函数代码只在上电或复位后运行一次
+ * @brief 啦啦啦啦
+ * 此函数代码只在上电或复位后运行一次
  * 相当于main函数 while前的代码
  *
  */
 void setup()
 {
-  ticker.attach_ms(TimerHz, timerCallback); //定时器100hz 10ms调用一次
+  ticker.attach_ms(TimerHz, timerCallback); //定时器1000hz 1ms调用一次
   Serial.begin(115200);                     //串口波特率115200
+  firstFlag = initEEPROM();                 //初始化eeprom
 
 #ifdef DEBUG
   Serial.println("\r\n\r\n");
   Serial.println("--------------");
   Serial.println("==esp Init==");
+  if (firstFlag) //只有首次运行才有，用来对板子进行基本的初始化
+    Serial.println("==First Runing... ==");
 #endif // DEBUG
 
-  firstFlag = initEEPROM(); //初始化eeprom
-  //   if (firstFlag)
-  //     Serial.println("==First Runing... ==");
   defWifiLink = initWIFI(firstFlag); //对wifi进行初始化操作
   initMQTT(defWifiLink);             //首次连接初始化
   initLED(firstFlag);                //初始化 led
-  digitalWrite(Key, HIGH);
-  pinMode(Key, INPUT);
 }
 
 /**
@@ -118,7 +116,6 @@ void SelectLedColor()
   {
     setLedColor(COLOR_RED);
   }
-
   else if (tcpLinkFlag) // tcp连接时
   {
     if (mqttLinkFlag)
@@ -149,6 +146,10 @@ void SelectLedColor()
   {
     setLedColor(COLOR_RED);
   }
+
+
+
+  
 }
 
 /**
@@ -165,6 +166,8 @@ void chkTcpMsg()
 
 /**
  * @brief 网络状态检测
+ * 用来检测wifi连接状态和mqtt连接状态
+ * 在wifi未连接时自动关闭mqtt连接
  *
  */
 void chkWlanConnet()
@@ -190,7 +193,9 @@ void chkWlanConnet()
 
 /**
  * @brief 定时器回调函数
- *
+ * 主要控制led闪烁频率
+ * 以及按键消抖
+ * 和按键功能复用
  */
 void timerCallback()
 {
