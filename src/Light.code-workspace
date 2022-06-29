@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "Light",
+			"path": ".."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"random": "cpp"
+		}
+	}
+}

@@ -1,0 +1,15 @@
+"filename", "language", "JSON with Comments", "Ini", "C++", "comment", "blank", "total"
+"f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\platformio.ini", "Ini", 0, 10, 0, 9, 3, 22
+"f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\src\Light.code-workspace", "JSON with Comments", 13, 0, 0, 0, 0, 13
+"f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\src\lit_eeprom.cpp", "C++", 0, 0, 273, 220, 55, 548
+"f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\src\lit_eeprom.h", "C++", 0, 0, 37, 16, 9, 62
+"f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\src\lit_led.cpp", "C++", 0, 0, 86, 61, 14, 161
+"f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\src\lit_led.h", "C++", 0, 0, 16, 11, 5, 32
+"f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\src\lit_mqtt.cpp", "C++", 0, 0, 122, 47, 22, 191
+"f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\src\lit_mqtt.h", "C++", 0, 0, 8, 10, 3, 21
+"f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\src\lit_msgcheck.cpp", "C++", 0, 0, 109, 45, 14, 168
+"f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\src\lit_msgcheck.h", "C++", 0, 0, 11, 11, 6, 28
+"f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\src\lit_wifi.cpp", "C++", 0, 0, 110, 48, 16, 174
+"f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\src\lit_wifi.h", "C++", 0, 0, 8, 13, 3, 24
+"f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\src\main.cpp", "C++", 0, 0, 137, 56, 16, 209
+"Total", "-", 13, 10, 917, 547, 166, 1653

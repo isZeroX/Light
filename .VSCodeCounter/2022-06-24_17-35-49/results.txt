@@ -1,0 +1,38 @@
+Date : 2022-06-24 17:35:49
+Directory : f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light
+Total : 11 files,  697 codes, 432 comments, 136 blanks, all 1265 lines
+
+Languages
++--------------------+------------+------------+------------+------------+------------+
+| language           | files      | code       | comment    | blank      | total      |
++--------------------+------------+------------+------------+------------+------------+
+| C++                |          9 |        673 |        423 |        133 |      1,229 |
+| JSON with Comments |          1 |         14 |          0 |          0 |         14 |
+| Ini                |          1 |         10 |          9 |          3 |         22 |
++--------------------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                              | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                 |         11 |        697 |        432 |        136 |      1,265 |
+| src                                                                               |         10 |        687 |        423 |        133 |      1,243 |
++-----------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| filename                                                                          | language           | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\platformio.ini           | Ini                |         10 |          9 |          3 |         22 |
+| f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\src\Light.code-workspace | JSON with Comments |         14 |          0 |          0 |         14 |
+| f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\src\lit_eeprom.cpp       | C++                |        280 |        217 |         48 |        545 |
+| f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\src\lit_eeprom.h         | C++                |         35 |         16 |          7 |         58 |
+| f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\src\lit_led.cpp          | C++                |         60 |         37 |         14 |        111 |
+| f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\src\lit_led.h            | C++                |          6 |         10 |          3 |         19 |
+| f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\src\lit_mqtt.cpp         | C++                |        113 |         47 |         24 |        184 |
+| f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\src\lit_mqtt.h           | C++                |          6 |         10 |          3 |         19 |
+| f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\src\lit_wifi.cpp         | C++                |         99 |         46 |         17 |        162 |
+| f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\src\lit_wifi.h           | C++                |          7 |         13 |          3 |         23 |
+| f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\src\main.cpp             | C++                |         67 |         27 |         14 |        108 |
+| Total                                                                             |                    |        697 |        432 |        136 |      1,265 |
++-----------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+

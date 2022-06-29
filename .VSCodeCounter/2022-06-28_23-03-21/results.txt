@@ -1,0 +1,40 @@
+Date : 2022-06-28 23:03:21
+Directory : f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light
+Total : 13 files,  940 codes, 547 comments, 166 blanks, all 1653 lines
+
+Languages
++--------------------+------------+------------+------------+------------+------------+
+| language           | files      | code       | comment    | blank      | total      |
++--------------------+------------+------------+------------+------------+------------+
+| C++                |         11 |        917 |        538 |        163 |      1,618 |
+| JSON with Comments |          1 |         13 |          0 |          0 |         13 |
+| Ini                |          1 |         10 |          9 |          3 |         22 |
++--------------------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                              | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                 |         13 |        940 |        547 |        166 |      1,653 |
+| src                                                                               |         12 |        930 |        538 |        163 |      1,631 |
++-----------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| filename                                                                          | language           | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\platformio.ini           | Ini                |         10 |          9 |          3 |         22 |
+| f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\src\Light.code-workspace | JSON with Comments |         13 |          0 |          0 |         13 |
+| f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\src\lit_eeprom.cpp       | C++                |        273 |        220 |         55 |        548 |
+| f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\src\lit_eeprom.h         | C++                |         37 |         16 |          9 |         62 |
+| f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\src\lit_led.cpp          | C++                |         86 |         61 |         14 |        161 |
+| f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\src\lit_led.h            | C++                |         16 |         11 |          5 |         32 |
+| f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\src\lit_mqtt.cpp         | C++                |        122 |         47 |         22 |        191 |
+| f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\src\lit_mqtt.h           | C++                |          8 |         10 |          3 |         21 |
+| f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\src\lit_msgcheck.cpp     | C++                |        109 |         45 |         14 |        168 |
+| f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\src\lit_msgcheck.h       | C++                |         11 |         11 |          6 |         28 |
+| f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\src\lit_wifi.cpp         | C++                |        110 |         48 |         16 |        174 |
+| f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\src\lit_wifi.h           | C++                |          8 |         13 |          3 |         24 |
+| f:\DESIGN\Design_Hardware\ToolBoard Light+\Arduino\Light\src\main.cpp             | C++                |        137 |         56 |         16 |        209 |
+| Total                                                                             |                    |        940 |        547 |        166 |      1,653 |
++-----------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
