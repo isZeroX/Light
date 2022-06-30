@@ -169,8 +169,8 @@ void chkWlanConnet()
     {
       mqttCheckFlag = false;             //清除检测标志
       mqttLinkFlag = mqttConnectCheck(); //获取mqtt状态
-      // Serial.print("check mqtt connect:");
-      // Serial.println(mqttLinkFlag);
+      Serial.print("check mqtt connect:");
+      Serial.println(mqttLinkFlag);
     }
   }
 }
